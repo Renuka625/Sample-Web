@@ -1,0 +1,199 @@
+<html>
+<head>
+<style>
+*{
+margin:0;
+padding:0;
+font-family:san-serif;
+box-sizing:border-block;
+}
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#71b7e6,#9b59b6);
+}
+.container{
+background:white;
+position:relative;
+width:100%;
+max-width:900px;
+margin:0 15px;
+border-radius:6px;
+padding:30px;
+}
+.container header{
+font-size:30px;
+color:red;
+text-align:center;
+padding-bottom:20px;
+}
+.container  #field{
+display:flex;
+align-items:center;
+justify-content:space-between;
+flex-wrap:wrap;
+}
+.container #field.input-field{
+display:flex;
+flex-direction:column;
+width:calc(100% /3-15px);
+}
+.input-field input
+{
+padding:0 15px;
+margin:10 0px;
+height:40px;
+border-radius:5px;
+color:#333;
+outline:none;
+border:1px solid#aaa;
+font-weight:400px;
+}
+.button{
+
+display-flex;
+text-align:center;
+
+justify-content: space-between;
+}
+</style>
+<script>
+function validate()
+{
+ var first=document.myform.f.value;
+ var last=document.myform.l.value;
+ 
+var email=document.myform.e.value;
+var pass=document.myform.p.value;
+var confirm=document.myform.c.value;
+var mobile=document.myform.m.value;
+var dob=document.myform.d.value;
+var checkemail=/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-z]{2,3}$/;
+var phoneno = /^\d{10}$/;
+ if(first.trim()=="")
+ {
+   document.getElementById("fname").innerHTML="Firstname can't be blank";
+   document.getElementById("fname").style.color="red";
+   return false;
+ }
+ else
+ {
+    document.getElementById("fname").innerHTML="";
+ }
+
+ if(last.trim()=="")
+ {
+    document.getElementById("lname").innerHTML="Lastname can't be blank";
+	 document.getElementById("lname").style.color="red";
+	 return false;
+ }
+ else
+ {
+    document.getElementById("lname").innerHTML="";
+ }
+ if(!checkemail.test(email))
+ {
+    document.getElementById("emailerror").innerHTML="Enter valid EmailId";
+	 document.getElementById("emailerror").style.color="red";
+	 return false;
+ }
+ else
+ {
+    document.getElementById("emailerror").innerHTML="";
+ }
+ if(!phoneno.test(mobile))
+ {
+ document.getElementById("mobile").innerHTML="Invalid Phone number";
+	 document.getElementById("mobile").style.color="red";
+	 return false;
+ }
+ else
+ {
+    document.getElementById("mobile").innerHTML="";
+ }
+ if(dob=="")
+ {
+ document.getElementById("dob").innerHTML="This is required field";
+	 document.getElementById("dob").style.color="red";
+	 return false;
+ }
+ else
+ {
+    document.getElementById("dob").innerHTML="";
+ }
+ if(pass==""||pass.length<6)
+ {
+ document.getElementById("pass1").innerHTML="Password atleast 6 characters";
+	 document.getElementById("pass1").style.color="red";
+	 return false;
+ }
+ else
+ {
+    document.getElementById("pass1").innerHTML="";
+ }
+ if(confirm!=pass)
+ {
+ document.getElementById("pass2").innerHTML="Password not matched";
+	 document.getElementById("pass2").style.color="red";
+	 return false;
+ }
+ else
+ {
+    document.getElementById("pass2").innerHTML="";
+ }
+
+ }
+</script>
+</head>
+<body>
+  <div class="container">
+   <header>Registration Form</header>
+     <form action="login.html" method="post" name="myform" onsubmit="return validate()">
+       <div id="field">
+      <div class="input-field"> 
+<label>FirstName</label>
+ <input type="text" placeholder="Enter your Firstname" name="f">
+ <p id="fname"></p>
+ </div>
+ <div class="input-field">
+ <label>LastName</label>
+ <input type="text" placeholder="Enter your Surname" name="l">
+ <p id="lname"></p>
+ </div>
+ <div class="input-field">
+ <label>Email</label>
+ <input type="text" placeholder="Enter your Email" name="e">
+ <p id="emailerror"></p>
+ </div>
+ <div class="input-field">
+ <label>Mobile Number</label>
+ <input type="text" placeholder="Enter your Mobile Number" name="m">
+ <p id="mobile"></p>
+ </div>
+ <div class="input-field">
+ <label>Date of Birth</label>
+ <input type="Date" placeholder="Enter your DOB" name="d">
+ <p id="dob"></p>
+ </div>
+ <div class="input-field">
+ <label>Password</label>
+ <input type="Password" placeholder="Enter your Password" name="p">
+ <p id="pass1"></p>
+ </div>
+ <div class="input-field">
+ <label>Confirm Password</label>
+ <input type="Password" placeholder="Reenter Password" name="c">
+ <p id="pass2"></p>
+ </div>
+ </div>
+ <div class="button">
+ 
+ <input type="submit" Style="margin-left:16px" value="Register">
+ 
+ <input type="reset" Style="margin-left:16px" value="Cancel">
+   </div>
+      
+ </form>
+</body>
+</html>
